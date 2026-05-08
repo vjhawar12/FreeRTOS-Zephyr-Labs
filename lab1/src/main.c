@@ -13,14 +13,14 @@ void low_priority_task(void* pvParams) {
     while (1) {
         snprintf(buf, sizeof(buf), "[%lu ms] LOW %u Step 1\r\n", xTaskGetTickCount(),  count);
         uart_outstring(buf);
-        burn_cycles(8000000);
+        burn_cycles(PERIOD_1S_CYCLES);
         snprintf(buf, sizeof(buf), "[%lu ms] LOW %u Step 2\r\n", xTaskGetTickCount(), count);
         uart_outstring(buf);
-        burn_cycles(8000000);
+        burn_cycles(PERIOD_1S_CYCLES);
         snprintf(buf, sizeof(buf), "[%lu ms] LOW %u Step 3\r\n", xTaskGetTickCount(), count);
         uart_outstring(buf);
         count++;
-        burn_cycles(8000000);
+        burn_cycles(PERIOD_1S_CYCLES);
         vTaskDelay(pdMS_TO_TICKS(3000)); 
     }   
 }
@@ -31,14 +31,14 @@ void med_priority_task(void* pvParams) {
     while (1) {
         snprintf(buf, sizeof(buf), "[%lu ms] MED %u Step 1\r\n", xTaskGetTickCount(),  count);
         uart_outstring(buf);
-        burn_cycles(8000000);
+        burn_cycles(PERIOD_1S_CYCLES);
         snprintf(buf, sizeof(buf), "[%lu ms] MED %u Step 2\r\n", xTaskGetTickCount(), count);
         uart_outstring(buf);
-        burn_cycles(8000000);
+        burn_cycles(PERIOD_1S_CYCLES);
         snprintf(buf, sizeof(buf), "[%lu ms] MED %u Step 3\r\n", xTaskGetTickCount(), count);
         uart_outstring(buf);
         count++; 
-        burn_cycles(8000000);
+        burn_cycles(PERIOD_1S_CYCLES);
         vTaskDelay(pdMS_TO_TICKS(2000));
     }   
 }

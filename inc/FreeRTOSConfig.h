@@ -13,7 +13,7 @@
 #define configUSE_16_BIT_TICKS                   0
 
 // preemptive scheduling = 1, cooperative scheduling = 0
-#define configUSE_PREEMPTION                     0
+#define configUSE_PREEMPTION                     1
 
 // use time slicing = 1, no time slicing = 0
 #define configUSE_TIME_SLICING                   1

@@ -1,39 +1,45 @@
 [0 ms] HIGH 0 
 [1 ms] MED 0 Step 1
+[470 ms] MED 0 Step 2
+[939 ms] MED 0 Step 3
 [1000 ms] HIGH 1 
-[1392 ms] MED 0 Step 2
+[1410 ms] LOW 0 Step 1
+[1880 ms] LOW 0 Step 2
 [2000 ms] HIGH 2 
-[2784 ms] MED 0 Step 3
+[2001 ms] MED 1 Step 1
+[2471 ms] MED 1 Step 2
+[2940 ms] MED 1 Step 3
 [3000 ms] HIGH 3 
+[3761 ms] LOW 0 Step 3
 [4000 ms] HIGH 4 
-[4177 ms] MED 1 Step 1
+[4001 ms] MED 2 Step 1
+[4471 ms] MED 2 Step 2
+[4940 ms] MED 2 Step 3
 [5000 ms] HIGH 5 
-[5568 ms] MED 1 Step 2
+[5642 ms] LOW 1 Step 1
 [6000 ms] HIGH 6 
-[6960 ms] MED 1 Step 3
+[6001 ms] MED 3 Step 1
+[6471 ms] MED 3 Step 2
+[6940 ms] MED 3 Step 3
 [7000 ms] HIGH 7 
+[7523 ms] LOW 1 Step 2
+[7993 ms] LOW 1 Step 3
 [8000 ms] HIGH 8 
-[8353 ms] MED 2 Step 1
+[8001 ms] MED 4 Step 1
+[8471 ms] MED 4 Step 2
+[8940 ms] MED 4 Step 3
 [9000 ms] HIGH 9 
-[9744 ms] MED 2 Step 2
+[9874 ms] LOW 2 Step 1
 [10000 ms] HIGH 10 
+[10001 ms] MED 5 Step 1
+[10471 ms] MED 5 Step 2
+[10940 ms] MED 5 Step 3
 [11000 ms] HIGH 11 
-[11138 ms] MED 2 Step 3
+[11755 ms] LOW 2 Step 2
 [12000 ms] HIGH 12 
-[12529 ms] MED 3 Step 1
+[12001 ms] MED 6 Step 1
+[12471 ms] MED 6 Step 2
+[12940 ms] MED 6 Step 3
 [13000 ms] HIGH 13 
-[13921 ms] MED 3 Step 2
+[13637 ms] LOW 2 Step 3
 [14000 ms] HIGH 14 
-[15000 ms] HIGH 15 
-[15315 ms] MED 3 Step 3
-[16000 ms] HIGH 16 
-[16706 ms] MED 4 Step 1
-[17000 ms] HIGH 17 
-[18000 ms] HIGH 18 
-[18100 ms] MED 4 Step 2
-[19000 ms] HIGH 19 
-[19492 ms] MED 4 Step 3
-[20000 ms] HIGH 20 
-[20883 ms] MED 5 Step 1
-[21000 ms] HIGH 21 
-[22000 ms] HIGH 22 
