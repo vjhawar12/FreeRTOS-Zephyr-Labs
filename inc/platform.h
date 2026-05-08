@@ -9,6 +9,7 @@ void timer2_init(uint16_t reload);
 void timer2_start(void);
 void uart_outchar(char c);
 void uart_outstring(const char* str);
+void uart_outbyte(uint8_t byte);
 void burn_cycles(uint32_t cycles);
 
 #endif
