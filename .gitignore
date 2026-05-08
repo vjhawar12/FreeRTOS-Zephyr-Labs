@@ -1,0 +1,10 @@
+.cache
+.settings
+.vscode
+build/
+cmake/
+Drivers/
+build.sh
+CMakeLists.txt
+compile_commands.json
+STM32F401XX_FLASH.ld

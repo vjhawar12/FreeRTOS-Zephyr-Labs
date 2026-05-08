@@ -1,0 +1,210 @@
+Lab 1 — Multiple Tasks and Priorities
+
+Goal: show the scheduler is real, not abstract.
+
+Implement:
+
+3 tasks
+different priorities
+each task prints over UART and/or toggles a different timing pattern
+demonstrate preemption and round-robin among equal priorities
+
+
+What it proves:
+
+task creation
+scheduling behavior
+priority effects
+basic stack sizing and task structure
+
+
+Lab 2 — Periodic Tasks and Deterministic Timing
+
+Goal: show how RTOS tasks run at defined rates.
+
+Implement:
+
+one task at 10 Hz
+one task at 2 Hz
+one background task
+use vTaskDelayUntil() rather than sloppy delay loops
+
+What it proves:
+
+periodic execution
+timing discipline
+difference between blocking and busy waiting
+
+Lab 3 — Queues for Inter-Task Communication
+
+Goal: move data safely between producer and consumer tasks.
+
+Implement:
+
+producer task generates samples/counter/events
+consumer task receives from queue and prints/processes
+maybe a second consumer variation
+
+What it proves:
+
+no sketchy globals
+clean ownership of data
+synchronization through RTOS primitives
+
+Lab 4 — Binary Semaphores and Event Signaling
+
+Goal: distinguish “data passing” from “wake-up signaling.”
+
+Implement:
+
+one task blocks waiting on semaphore
+button press, timer callback, or another task gives semaphore
+task wakes and performs action
+
+What it proves:
+
+event-driven design
+reduced CPU waste
+correct blocked-state behavior
+
+Lab 5 — Mutexes and Shared Resource Protection
+
+Goal: handle contention for a shared peripheral cleanly.
+
+Implement:
+
+two or more tasks trying to use UART or a shared software resource
+protect with mutex
+show clean vs garbled output with and without mutex
+
+What it proves:
+
+mutual exclusion
+shared resource discipline
+intro to priority inversion concept
+
+Lab 6 — Task Notifications as Lightweight Signals
+
+Goal: show you know the more efficient primitive, not just queues/semaphores.
+
+Implement:
+
+direct-to-task notifications
+ISR or task signals worker task
+worker performs small unit of work
+
+What it proves:
+
+awareness of FreeRTOS-specific efficient primitives
+better embedded instincts than “everything is a queue”
+
+Lab 7 — Software Timers and Deferred Actions
+
+Goal: separate timing callbacks from full task logic.
+
+Implement:
+
+one-shot timer
+periodic software timer
+timer callback signals a task instead of doing heavy work directly
+
+What it proves:
+
+timer service understanding
+deferred work patterns
+cleaner task design
+
+Lab 8 — Interrupts with RTOS
+
+Goal: connect hardware interrupts to tasks properly.
+
+Implement:
+
+external button interrupt, UART RX interrupt, or hardware timer interrupt
+ISR uses FromISR API
+unblocks/signals a task
+task does the heavier processing
+
+What it proves:
+
+ISR/task boundary understanding
+correct RTOS interrupt usage
+real embedded integration
+
+Lab 9 — UART Command Interface / Mini CLI
+
+Goal: make the system interactive and debuggable.
+
+Implement:
+
+UART RX task or ISR+task combo
+parse simple commands like help, stats, led on, tasks
+commands trigger actions or print state
+
+What it proves:
+
+practical debug tooling
+nontrivial task coordination
+string parsing in embedded context
+
+Lab 10 — Peripheral Driver Integration
+
+Goal: integrate a real hardware peripheral under RTOS.
+
+Implement one:
+
+I2C sensor
+SPI peripheral
+ADC sampling task
+encoder/button matrix/whatever fits your board
+
+Structure:
+
+driver layer
+acquisition task
+queue or notification to processing task
+
+What it proves:
+
+RTOS + peripheral interaction
+layering and modularity
+actual firmware relevance beyond toy scheduling
+
+Lab 11 — System Health, Debug, and Reliability
+
+Goal: show production-minded thinking.
+
+Implement:
+
+stack high-water mark reporting
+heap usage reporting
+task runtime stats if feasible
+watchdog concept or fault handler strategy
+error logging/assert path
+
+What it proves:
+
+robustness mindset
+observability
+awareness of failure modes
+
+Lab 12 — Integrated Mini Application
+
+Goal: combine the earlier labs into one coherent embedded system.
+
+Example app:
+
+sensor task samples data
+processing task filters/validates
+comms task prints or responds over UART
+button/interrupt triggers mode switch
+queue + notifications + mutex all used appropriately
+health task reports system stats
+
+What it proves:
+
+architecture
+module boundaries
+real firmware design instincts
+
+
