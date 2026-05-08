@@ -20,7 +20,7 @@ void producer_with_queue(void* pvParams) {
     int value = 1;
     int sample_id = 0;
     TickType_t last_wake = xTaskGetTickCount(); 
-    const TickType_t frequency = pdMS_TO_TICKS(300);
+    const TickType_t frequency = pdMS_TO_TICKS(100);
     while (1) {
         fake_sensor_data data;  
         data.value = value *= 2;
@@ -43,6 +43,7 @@ void consumer_with_queue(void* pvParams) {
             snprintf(buffer, sizeof(buffer), "ID: %u Time Sent: %u Time received: %u Value: %u\r\n", data.sample_id, data.produced_tick, xTaskGetTickCount(), data.value); 
             uart_outstring(buffer);
         } else uart_outstring("Queue empty\r\n");
+        vTaskDelay(pdMS_TO_TICKS(500)); 
     } 
 }
 

@@ -1,0 +1,34 @@
+ID: 0 Time Sent: 0 Time received: 0 Value: 2
+ID: 1 Time Sent: 100 Time received: 503 Value: 4
+Queue full
+ID: 2 Time Sent: 200 Time received: 1007 Value: 8
+Queue full
+Queue full
+Queue full
+Queue full
+ID: 3 Time Sent: 300 Time received: 1511 Value: 16
+Queue full
+Queue full
+Queue full
+Queue full
+ID: 4 Time Sent: 400 Time received: 2015 Value: 32
+Queue full
+Queue full
+Queue full
+Queue full
+ID: 5 Time Sent: 500 Time received: 2519 Value: 64
+Queue full
+Queue full
+Queue full
+Queue full
+ID: 6 Time Sent: 600 Time received: 3023 Value: 128
+Queue full
+Queue full
+Queue full
+Queue full
+ID: 7 Time Sent: 700 Time received: 3527 Value: 256
+Queue full
+Queue full
+Queue full
+Queue full
+ID: 8 Time Sent: 800 Time received: 4031 Value: 512
