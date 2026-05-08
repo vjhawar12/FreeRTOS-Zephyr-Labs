@@ -1,6 +1,7 @@
 .cache
 .settings
-.vscode
+.vscode/
+system_stm32f4xx.c
 build/
 cmake/
 Drivers/

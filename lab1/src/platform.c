@@ -2,6 +2,7 @@
 #include "stm32f401xe.h"
 #include <stddef.h>
 #include "irq.h"
+#include "stdint.h"
 
 void PLL_Init(void) {
     /* Disable PLL */
@@ -138,14 +139,10 @@ void uart_outstring(const char *str) {
     }
 }
 
-void uart_test(void) {
-    int count = 100000;
-    while (1) {
-        count = 100000;
-        uart_outstring("Hello\n");
-        while (count) {
-            asm("NOP");
-            count--;
-        }
+void burn_cycles(uint32_t cycles) {
+    while (cycles) {
+        __asm volatile("nop");
+        cycles--;
     }
 }
+

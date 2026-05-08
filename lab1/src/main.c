@@ -3,42 +3,62 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include <stdint.h>
+#include "stdio.h"
 
 void low_priority_task(void* pvParams) {
-    int16_t *delay = (int16_t*)pvParams;
+    char buf[64];
+    uint32_t count = 0;
     while (1) {
-        uart_outstring("LOW\r\n");
-        vTaskDelay(pdMS_TO_TICKS(*delay)); 
+        snprintf(buf, sizeof(buf), "[%lu ms] LOW %u Step 1\r\n", xTaskGetTickCount(),  count);
+        uart_outstring(buf);
+        burn_cycles(8000000);
+        snprintf(buf, sizeof(buf), "[%lu ms] LOW %u Step 2\r\n", xTaskGetTickCount(), count);
+        uart_outstring(buf);
+        burn_cycles(8000000);
+        snprintf(buf, sizeof(buf), "[%lu ms] LOW %u Step 3\r\n", xTaskGetTickCount(), count);
+        uart_outstring(buf);
+        count++;
+        burn_cycles(8000000);
+        vTaskDelay(pdMS_TO_TICKS(3000)); 
     }   
 }
 
 void med_priority_task(void* pvParams) {
-    int16_t *delay = (int16_t*)pvParams;
+    char buf[64];
+    uint32_t count = 0;
     while (1) {
-        uart_outstring("MED\r\n");
-        vTaskDelay(pdMS_TO_TICKS(*delay)); 
+        snprintf(buf, sizeof(buf), "[%lu ms] MED %u Step 1\r\n", xTaskGetTickCount(),  count);
+        uart_outstring(buf);
+        burn_cycles(8000000);
+        snprintf(buf, sizeof(buf), "[%lu ms] MED %u Step 2\r\n", xTaskGetTickCount(), count);
+        uart_outstring(buf);
+        burn_cycles(8000000);
+        snprintf(buf, sizeof(buf), "[%lu ms] MED %u Step 3\r\n", xTaskGetTickCount(), count);
+        uart_outstring(buf);
+        count++; 
+        burn_cycles(8000000);
+        vTaskDelay(pdMS_TO_TICKS(2000));
     }   
 }
 
 void high_priority_task(void* pvParams) {
-    int16_t *delay = (int16_t*)pvParams;
+    char buf[64];
+    uint32_t count = 0;
     while (1) {
-        uart_outstring("HIGH\r\n");
-        vTaskDelay(pdMS_TO_TICKS(*delay)); 
+        snprintf(buf, sizeof(buf), "[%lu ms] HIGH %u \r\n", xTaskGetTickCount(), count);
+        uart_outstring(buf);
+        vTaskDelay(pdMS_TO_TICKS(1000)); 
+        count++;
     }
 }
 
 int main(void) {
-    int16_t low_priority_delay = 300;
-    int16_t med_priority_delay = 200;
-    int16_t high_priority_delay = 100; 
-
     PLL_Init();
     led2_Init();
     uart_Init();
-    xTaskCreate(low_priority_task, "low priority", 256, (void*)&low_priority_delay, 2, NULL);
-    xTaskCreate(med_priority_task, "med priority", 256, (void*)&med_priority_delay, 4, NULL);
-    xTaskCreate(high_priority_task, "high priority", 256, (void*)&high_priority_delay, 6, NULL);
+    xTaskCreate(low_priority_task, "low priority", 256, NULL, 2, NULL);
+    xTaskCreate(med_priority_task, "med priority", 256, NULL, 3, NULL);
+    xTaskCreate(high_priority_task, "high priority", 256, NULL, 10, NULL);
     vTaskStartScheduler();
     while (1) {
 
