@@ -4,8 +4,6 @@
 #include "task.h"
 #include <stdint.h>
 
-TaskHandle_t task_handle;
-
 void low_priority_task(void* pvParams) {
     int16_t *delay = (int16_t*)pvParams;
     while (1) {
@@ -31,9 +29,9 @@ void high_priority_task(void* pvParams) {
 }
 
 int main(void) {
-    int16_t low_priority_delay = 100;
-    int16_t med_priority_delay = 300;
-    int16_t high_priority_delay = 500; 
+    int16_t low_priority_delay = 300;
+    int16_t med_priority_delay = 200;
+    int16_t high_priority_delay = 100; 
 
     PLL_Init();
     led2_Init();

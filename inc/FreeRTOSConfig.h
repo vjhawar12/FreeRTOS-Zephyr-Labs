@@ -6,7 +6,7 @@
 /* Clocking */
 #define configCPU_CLOCK_HZ                       80842105UL
 #define configTICK_RATE_HZ                       1000U
-#define configMAX_PRIORITIES                     5
+#define configMAX_PRIORITIES                     10
 #define configMINIMAL_STACK_SIZE                 128
 #define configTOTAL_HEAP_SIZE                    8 * 1024U
 #define configMAX_TASK_NAME_LEN                  16
