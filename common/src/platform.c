@@ -71,7 +71,7 @@ void timer2_init(uint16_t reload) {
     TIM2->CR1 |= (1 << 4); // downcounter
     TIM2->CR1 |= (1 << 7); // auto reload
     TIM2->ARR = (uint16_t)reload;
-    TIM2->PSC = 8083; // 80.84 MHZ / (8083 + 1) = 100 hz => period = 10 ms
+    TIM2->PSC = 8083; // 80.84 MHZ / (8083 + 1) = 10000 hz => period = 0.1 ms
     TIM2->DIER |= (1 << 0); // interrupt enable
     NVIC_EnableIRQ(28); 
 }
@@ -145,4 +145,3 @@ void burn_cycles(uint32_t cycles) {
         cycles--;
     }
 }
-
