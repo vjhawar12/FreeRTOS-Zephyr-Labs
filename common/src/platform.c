@@ -64,6 +64,13 @@ void led2_Init(void) {
     GPIOA->PUPDR &= ~(3U << (5U * 2U));
 }
 
+void toggle_led2(uint32_t cycles) {
+    GPIOA->ODR |= (1 << 5);
+    burn_cycles(cycles);
+    GPIOA->ODR &= ~(1 << 5);    
+    burn_cycles(cycles);
+}
+
 void timer2_init(uint16_t reload) {
     RCC->APB1ENR |= (1 << 0); // TIM2 clock enable
     TIM2->CR1 &= ~(1 << 0); // counter disable
@@ -74,10 +81,17 @@ void timer2_init(uint16_t reload) {
     TIM2->PSC = 8083; // 80.84 MHZ / (8083 + 1) = 10000 hz => period = 0.1 ms
     TIM2->DIER |= (1 << 0); // interrupt enable
     NVIC_EnableIRQ(28); 
+    TIM2->SR = 0;
+    NVIC_ClearPendingIRQ(28);
 }
 
 void timer2_start(void) {
     TIM2->CR1 |= (1 << 0); // counter enable
+}
+
+void TIM2_IRQHandler(void) {
+    TIM2->SR = 0;
+    tim2_isr();
 }
 
 void uart_Init(void) {
