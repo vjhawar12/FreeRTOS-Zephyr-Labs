@@ -1,11 +1,44 @@
-.cache
-.settings
-.vscode/
-system_stm32f4xx.c
-build/
-cmake/
-Drivers/
-build.sh
-CMakeLists.txt
-compile_commands.json
-STM32F401XX_FLASH.ld
+# Build output
+/build/
+/out/
+/dist/
+
+# CMake
+/CMakeFiles/
+/CMakeCache.txt
+/cmake_install.cmake
+/compile_commands.json
+/Makefile
+
+# Ninja
+/.ninja_deps
+/.ninja_log
+/build.ninja
+
+# Binaries / firmware artifacts
+*.elf
+*.bin
+*.hex
+*.map
+*.o
+*.obj
+*.a
+*.su
+
+# Debug / dependency files
+*.d
+*.lst
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
