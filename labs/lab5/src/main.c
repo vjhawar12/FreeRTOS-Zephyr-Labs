@@ -10,7 +10,8 @@
 #define DELAY_100MS 100
 
 SemaphoreHandle_t mutex; 
-// use binary semaphores when task2 waits on task1 without needing actual data being passed -- just a signal telling task2 to wake up
+// use mutexes to protect shared data resources without race conditions using a lock and unlock mechanism 
+// ensuring tasks block until the mutex is 'free'.
 char shared_buffer[64]; 
 
 void tim2_isr() {
