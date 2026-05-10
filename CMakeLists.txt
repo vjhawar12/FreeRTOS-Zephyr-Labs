@@ -9,7 +9,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
-set(LAB_NAME "lab5" CACHE STRING "Lab to build")
+set(LAB_NAME "lab6" CACHE STRING "Lab to build")
 
 set(MCU_FLAGS
     -mcpu=cortex-m4
