@@ -2,11 +2,18 @@
 #define PLATFORM_H
 #include "stdint.h"
 
+#define periodic_timer_init timer2_init
+#define periodic_timer_start timer2_start
+#define oneshot_timer_init timer3_init
+#define oneshot_timer_start timer3_start
+
 void led2_Init(void);
 void uart_Init(void);
 void PLL_Init(void);
 void timer2_init(uint16_t reload);
 void timer2_start(void);
+void timer3_init(uint16_t initial_value);
+void timer3_start(void); 
 void uart_outchar(char c);
 void uart_outstring(const char* str);
 void uart_outbyte(uint8_t byte);

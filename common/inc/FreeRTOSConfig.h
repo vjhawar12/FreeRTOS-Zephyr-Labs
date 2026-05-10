@@ -29,7 +29,10 @@
 #define configUSE_COUNTING_SEMAPHORES            0
 #define configUSE_QUEUE_SETS                     0
 #define configUSE_TASK_NOTIFICATIONS             1
-#define configUSE_TIMERS                         0
+#define configUSE_TIMERS                         1
+#define configTIMER_TASK_PRIORITY                ( configMAX_PRIORITIES - 1 )
+#define configTIMER_QUEUE_LENGTH                 10
+#define configTIMER_TASK_STACK_DEPTH             configMINIMAL_STACK_SIZE
 
 /* API inclusion */
 #define INCLUDE_vTaskPrioritySet                 1

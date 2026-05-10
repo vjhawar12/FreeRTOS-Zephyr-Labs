@@ -94,6 +94,29 @@ void TIM2_IRQHandler(void) {
     tim2_isr();
 }
 
+void timer3_init(uint16_t reload) {
+    RCC->APB1ENR |= (1 << 0); // TIM2 clock enable
+    TIM2->CR1 &= ~(1 << 0); // counter disable
+    TIM2->CR1 &= ~(1 << 1); // update enabled
+    TIM2->CR1 |= (1 << 4); // downcounter
+    TIM2->CR1 &= ~(1 << 7); // disable auto reload
+    TIM2->ARR = (uint16_t)reload;
+    TIM2->PSC = 8083; // 80.84 MHZ / (8083 + 1) = 10000 hz => period = 0.1 ms
+    TIM2->DIER |= (1 << 0); // interrupt enable
+    NVIC_EnableIRQ(28); 
+    TIM2->SR = 0;
+    NVIC_ClearPendingIRQ(28);
+}
+
+void timer3_start(void) {
+    TIM2->CR1 |= (1 << 0); // counter enable
+}
+
+void TIM3_IRQHandler(void) {
+    TIM3->SR = 0;
+    tim3_isr();
+}
+
 void uart_Init(void) {
     /* Enable clocks */
     RCC->AHB1ENR |= (1U << 0);    /* GPIOAEN */

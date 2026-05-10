@@ -9,7 +9,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
-set(LAB_NAME "lab6" CACHE STRING "Lab to build")
+set(LAB_NAME "lab7" CACHE STRING "Lab to build")
 
 set(MCU_FLAGS
     -mcpu=cortex-m4
@@ -54,6 +54,7 @@ set(FREERTOS_SOURCES
     ${CMAKE_SOURCE_DIR}/freertos/heap_4.c
     ${CMAKE_SOURCE_DIR}/freertos/port.c
     ${CMAKE_SOURCE_DIR}/freertos/syscalls.c
+    ${CMAKE_SOURCE_DIR}/freertos/timers.c
 )
 
 set(LAB_MAIN
