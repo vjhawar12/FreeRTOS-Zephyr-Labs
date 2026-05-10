@@ -1,0 +1,23 @@
+[0] Task 3 us[1] Task 1 [2] Task 2 uing shared using sharedsing shared buffer
+ bubuffer
+ffer
+[300] Task 3 [301] Task using shared[303] Task 1 using shar buffer
+2 ued buffer
+sing shared buffer
+[600] Task 3 [601] Task using shared[603] Task 1 using shar buffer
+2 ued buffer
+sing shared buffer
+[900] Task 3 [901] Task using shared[903] Task 1 using shar buffer
+2 ued buffer
+sing shared buffer
+[1200] Task 3[1201] Task using share[1203] Task 2 using shad buffer
+ using share
+            d buffer
+[1500] Task 3[1501] Task using share[1503] Task 2 using shad buffer
+ using share
+            d buffer
+[1800] Task 3[1801] Task using share[1803] Task  2 using shd buffer
+2 ared bufferusing shared
+ buffer
+[2100] Task 3[2101] Task using share[2103] Task 2 using shad buffer
+ using share

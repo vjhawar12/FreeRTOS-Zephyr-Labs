@@ -15,6 +15,7 @@ typedef struct fake_sensor_data{
 } fake_sensor_data; 
 
 QueueHandle_t queue;
+// use queues when you want to pass data between producer and consumer tasks while avoiding race conditions, avoiding global state variables, and using blocking not polling
 
 void producer_with_queue(void* pvParams) {
     int value = 1;

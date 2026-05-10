@@ -10,6 +10,7 @@
 #define PERIOD_1S_CYCLES 8084000
 
 SemaphoreHandle_t binary_semphr; 
+// use binary semaphores when task2 waits on task1 without needing actual data being passed -- just a signal telling task2 to wake up
 
 void tim2_isr() {
     BaseType_t higher_priority_awoken = pdFALSE;
