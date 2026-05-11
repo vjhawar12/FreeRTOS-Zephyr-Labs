@@ -22,5 +22,7 @@ void uart_outstring(const char* str);
 void uart_outbyte(uint8_t byte);
 void burn_cycles(uint32_t cycles);
 void toggle_led2(uint32_t cycles);
+void turnon_led2();
+void turnoff_led2();
 
 #endif

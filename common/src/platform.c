@@ -71,6 +71,14 @@ void toggle_led2(uint32_t cycles) {
     burn_cycles(cycles);
 }
 
+void turnon_led2() {
+    GPIOA->ODR |= (1 << 5);
+}
+
+void turnoff_led2() {
+    GPIOA->ODR &= ~(1 << 5);    
+}
+
 void timer2_init(uint16_t reload) {
     RCC->APB1ENR |= (1 << 0); // TIM2 clock enable
     TIM2->CR1 &= ~(1 << 0); // counter disable
