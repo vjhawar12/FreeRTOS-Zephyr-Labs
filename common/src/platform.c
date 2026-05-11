@@ -80,9 +80,9 @@ void timer2_init(uint16_t reload) {
     TIM2->ARR = (uint16_t)reload;
     TIM2->PSC = 8083; // 80.84 MHZ / (8083 + 1) = 10000 hz => period = 0.1 ms
     TIM2->DIER |= (1 << 0); // interrupt enable
-    NVIC_EnableIRQ(28); 
+    NVIC_EnableIRQ(TIM2_IRQn); 
     TIM2->SR = 0;
-    NVIC_ClearPendingIRQ(28);
+    NVIC_ClearPendingIRQ(TIM2_IRQn);
 }
 
 void timer2_start(void) {
@@ -96,20 +96,20 @@ void TIM2_IRQHandler(void) {
 
 void timer3_init(uint16_t reload) {
     RCC->APB1ENR |= (1 << 0); // TIM2 clock enable
-    TIM2->CR1 &= ~(1 << 0); // counter disable
-    TIM2->CR1 &= ~(1 << 1); // update enabled
-    TIM2->CR1 |= (1 << 4); // downcounter
-    TIM2->CR1 &= ~(1 << 7); // disable auto reload
-    TIM2->ARR = (uint16_t)reload;
-    TIM2->PSC = 8083; // 80.84 MHZ / (8083 + 1) = 10000 hz => period = 0.1 ms
-    TIM2->DIER |= (1 << 0); // interrupt enable
-    NVIC_EnableIRQ(28); 
-    TIM2->SR = 0;
-    NVIC_ClearPendingIRQ(28);
+    TIM3->CR1 &= ~(1 << 0); // counter disable
+    TIM3->CR1 &= ~(1 << 1); // update enabled
+    TIM3->CR1 |= (1 << 4); // downcounter
+    TIM3->CR1 &= ~(1 << 7); // disable auto reload
+    TIM3->ARR = (uint16_t)reload;
+    TIM3->PSC = 8083; // 80.84 MHZ / (8083 + 1) = 10000 hz => period = 0.1 ms
+    TIM3->DIER |= (1 << 0); // interrupt enable
+    NVIC_EnableIRQ(TIM3_IRQn); 
+    TIM3->SR = 0;
+    NVIC_ClearPendingIRQ(TIM3_IRQn);
 }
 
 void timer3_start(void) {
-    TIM2->CR1 |= (1 << 0); // counter enable
+    TIM3->CR1 |= (1 << 0); // counter enable
 }
 
 void TIM3_IRQHandler(void) {
@@ -155,11 +155,23 @@ void uart_Init(void) {
     /* 1 stop bit */
     USART2->CR2 &= ~(3U << 12);
 
-    /* TX only */
+    /* TX enabled */
     USART2->CR1 |= (1U << 3);
+    /* RX enabled */
+    USART2->CR1 |= (1U << 2); 
 
     /* Enable USART */
     USART2->CR1 |= (1U << 13);
+    NVIC_EnableIRQ(USART2_IRQn); 
+}
+
+void uart_enable_rx_interrupt() {
+    USART2->CR1 |= (1U << 5); 
+    // USART2->CR1 |= (1U << 7); 
+}
+
+void USART2_IRQHandler() {
+    uart2_isr();
 }
 
 void uart_outchar(char c) {
@@ -173,6 +185,22 @@ void uart_outstring(const char *str) {
     while (str[i] != 0) {
         uart_outchar(str[i]);
         i++;
+    }
+}
+
+char uart_inchar() {
+    while ((USART2->SR & (1 << 5)) != (1 << 5)); 
+    return USART2->DR; 
+}
+
+char uart_inchar_nonblocking() { 
+    return USART2->DR; 
+}
+
+void uart_instring(char* str, const int length) {
+    int i = 0;
+    for (i = 0; i < length; i++) {
+        str[i] = uart_inchar();
     }
 }
 

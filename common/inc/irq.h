@@ -8,5 +8,7 @@ void TIM2_IRQHandler();
 void tim2_isr(); 
 void TIM3_IRQHandler();
 void tim3_isr();
+void USART2_IRQHandler(); 
+void uart2_isr();
 
 #endif
