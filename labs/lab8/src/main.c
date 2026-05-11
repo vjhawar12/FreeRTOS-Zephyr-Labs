@@ -57,7 +57,6 @@ void worker_task(void* pvParams) {
     while (1) {
         xQueueReceive(queue, &event, portMAX_DELAY); 
         if (event.event == UART) {
-            // uart_outstring(" "); 
             byte = event.data[0];
             if (byte == '\n' || byte == '\r') {
                 if (idx < BUFFER_SIZE - 1) {
@@ -80,11 +79,13 @@ int main(void) {
     PLL_Init();
     led2_Init();
     uart_Init();
-    uart_outstring("Starting...\r\n"); 
-    uart_enable_rx_interrupt();
-    periodic_timer_init(PERIOD_500MS);
     queue = xQueueCreate(16, sizeof(EventType)); 
+    uart_outstring("Starting...\r\n"); 
+    periodic_timer_init(PERIOD_500MS);
+    periodic_timer_start();
+    uart_outstring("after start\r\n");
     xTaskCreate(worker_task, "worker task", 256, NULL, 5, &worker_task_handle);
+    uart_enable_rx_interrupt();
     vTaskStartScheduler();
     while (1) {
 
