@@ -59,7 +59,6 @@ static inline void handle_led_off() {
 
 static inline void handle_led_toggle(LED_task led) {
     xQueueSend(led_queue, &led, 0); 
-    // uart_outstring("LED2 toggling\r\n"); 
 }
 
 static inline void handle_stats() {
@@ -141,8 +140,10 @@ void cli_task(void* pvParams) {
 
 void led_task(void* pvParams) {
     LED_task task;
+    int i = 0;
     while (1) {
         xQueueReceive(led_queue, &task, portMAX_DELAY);
+        uart_outstring("got led cmd\r\n");
         char buffer[32];
         snprintf(buffer, 32, "period %d runs %d\r\n", task.period, task.runs); 
         uart_outstring(buffer); 
@@ -151,13 +152,15 @@ void led_task(void* pvParams) {
         }  else if (task.period == MAX_PERIOD && task.runs == MAX_RUNS) {
             turnon_led2();
         } else {
-            int i = 0;
             for (i = 0; i < task.runs; i++) {
+                uart_outstring("on\r\n");
                 turnon_led2(); 
                 vTaskDelay(pdMS_TO_TICKS(task.period)); 
+                uart_outstring("off\r\n");
                 turnoff_led2();
                 vTaskDelay(pdMS_TO_TICKS(task.period)); 
             } 
+            uart_outstring("done\r\n"); 
             turnoff_led2();
         }
     }
@@ -169,8 +172,8 @@ int main(void) {
     uart_Init();
     led_queue = xQueueCreate(16, sizeof(LED_task)); 
     message_queue = xQueueCreate(16, sizeof(char)); 
-    xTaskCreate(cli_task, "CLI task", 256, NULL, 5, NULL);
-    xTaskCreate(led_task, "LED task", 256, NULL, 7, NULL);
+    xTaskCreate(cli_task, "CLI task", 512, NULL, 5, NULL);
+    xTaskCreate(led_task, "LED task", 512, NULL, 7, NULL);
     uart_enable_rx_interrupt();
     vTaskStartScheduler();
     while (1) {
