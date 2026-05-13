@@ -41,6 +41,10 @@ void PLL_Init(void) {
     RCC->CFGR &= ~(3U << 0);
     RCC->CFGR |=  (2U << 0);
 
+    /* Setting APB1 to 40.21 Mhz*/
+    RCC->CFGR &= ~(0b111U << 10);
+    RCC->CFGR |= (0b100U << 10);  
+
     /* Wait until PLL is actually used as system clock */
     while (((RCC->CFGR >> 2) & 3U) != 2U) {}
 }

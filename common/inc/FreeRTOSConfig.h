@@ -49,7 +49,7 @@
 #define INCLUDE_xTaskGetHandle                   0
 #define INCLUDE_eTaskGetState                    0
 #define INCLUDE_xTimerPendFunctionCall           0
-#define INCLUDE_uxTaskGetStackHighWaterMark      0
+#define INCLUDE_uxTaskGetStackHighWaterMark      1
 #define INCLUDE_uxTaskGetStackHighWaterMark2     0
 
 /* Cortex-M interrupt priorities */
