@@ -65,8 +65,8 @@ Builds a simple UART-based command interface for runtime interaction and debuggi
 
 **Key concepts:** UART command handling, parsing, embedded debug tooling, coordinated task actions
 
-### Lab 10 — Peripheral Driver Integration
-Integrates a real hardware peripheral such as an I2C sensor, SPI device, ADC path, or similar subsystem into an RTOS-based application. This lab focuses on **driver/application layering** and demonstrates relevance beyond scheduler-only demos.
+### Lab 10 — Low-Level Driver design and integration
+I wrote a low-level driver in C for the ADXL345 accelerometer. I integrated this with an RTOS-based application. This lab focuses on **driver/application layering** and demonstrates relevance beyond scheduler-only demos.
 
 **Key concepts:** RTOS + peripheral integration, modular driver structure, acquisition tasks, processing tasks
 
