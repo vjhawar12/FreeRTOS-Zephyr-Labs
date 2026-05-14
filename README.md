@@ -1,4 +1,4 @@
-# FreeRTOS / Zephyr Labs
+# STM32 RTOS Drivers with FreeRTOS 
 
 A hands-on embedded systems lab series focused on building practical intuition for **real-time operating systems**, **low-level firmware design**, and **hardware/software integration** on microcontrollers.
 
