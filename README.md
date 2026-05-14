@@ -1,4 +1,4 @@
-# FreeRTOS / Zephyr Labs
+# STM32 RTOS Drivers with FreeRTOS 
 
 A hands-on embedded systems lab series focused on building practical intuition for **real-time operating systems**, **low-level firmware design**, and **hardware/software integration** on microcontrollers.
 
@@ -17,6 +17,22 @@ This repo explores the core patterns used in RTOS-based embedded systems: task s
 - Modular task-based architecture for embedded systems
 
 ---
+
+## Low-Level Driver Work
+
+This repo includes a register-level SPI2 driver for the STM32F401RE and an ADXL345 accelerometer driver built on top of it.
+
+Driver files:
+- `common/drivers/spi.c` — STM32 SPI2 initialization, GPIO alternate-function setup, chip-select control, blocking byte/multi-byte SPI transfers
+- `common/drivers/adxl345.c` — ADXL345 register reads/writes, device ID check, measurement mode setup, range configuration, multi-byte XYZ sample reads
+
+This demonstrates:
+- Direct CMSIS/register-level peripheral configuration
+- GPIO alternate-function setup for SPI pins
+- SPI mode, baud rate, frame format, and NSS/software chip-select configuration
+- Sensor driver layering over a reusable bus driver
+- RTOS integration through Lab 10
+
 
 ## Lab Breakdown
 
