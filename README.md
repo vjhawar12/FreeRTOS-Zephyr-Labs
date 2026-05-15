@@ -86,16 +86,23 @@ I wrote a low-level driver in C for the ADXL345 accelerometer. I integrated this
 
 **Key concepts:** RTOS + peripheral integration, modular driver structure, acquisition tasks, processing tasks
 
-### Lab 11 — System Health, Debug, and Reliability
-Adds observability and production-minded diagnostics, such as stack high-water marks, heap usage checks, runtime statistics, watchdog concepts, and fault handling paths. This lab emphasizes reliability and awareness of failure modes in embedded systems.
+## Lab 11 — I2C Distance Sensor Integration
 
-**Key concepts:** observability, runtime diagnostics, stack/heap monitoring, watchdog thinking, robustness
+Adds a second hardware peripheral using an I2C time-of-flight or proximity-style distance sensor. This lab introduces an I2C bus driver, a device-specific distance sensor driver, and an RTOS acquisition task that periodically samples range data and sends it to a processing task through a queue.
 
-### Lab 12 — Integrated Mini Application
-Combines earlier RTOS concepts into a cohesive embedded application. Example building blocks include sensor acquisition, processing, communications, interrupt-driven events, shared resource protection, and health reporting, all organized using clear task boundaries.
+**Key concepts:** I2C transactions, register-based sensor drivers, distance/proximity sensing, periodic acquisition, queue-based data transfer, driver/application separation
 
-**Key concepts:** embedded architecture, task decomposition, integrated RTOS design, modular firmware structure
+### Lab 12 — Integrated Multi-Sensor RTOS Application
 
+Combines the SPI accelerometer and I2C distance sensor into a cohesive drone-style telemetry node. Separate acquisition tasks sample motion and distance data at appropriate rates, while a processing task consumes sensor messages, formats telemetry, detects simple proximity/motion conditions, and reports system health over UART.
+
+**Key concepts:** multi-peripheral integration, sensor telemetry, task decomposition, producer/consumer queues, mixed-rate sampling, modular firmware architecture, RTOS-based system design
+
+### Lab 13 — System Health, Debug, and Reliability
+
+Adds production-minded observability and diagnostics to the integrated application, including stack high-water marks, heap usage checks, task runtime statistics, watchdog concepts, dropped-sample counters, sensor read failure tracking, and fault handling paths. This lab emphasizes reliability, debuggability, and awareness of failure modes in embedded systems.
+
+**Key concepts:** observability, runtime diagnostics, stack/heap monitoring, watchdog thinking, fault handling, robustness
 ---
 
 ## Why this repo exists
