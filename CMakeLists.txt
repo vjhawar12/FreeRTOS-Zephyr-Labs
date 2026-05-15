@@ -9,7 +9,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
-set(LAB_NAME "lab10" CACHE STRING "Lab to build")
+set(LAB_NAME "low_level_driver_rtos" CACHE STRING "Lab to build")
 
 set(MCU_FLAGS
     -mcpu=cortex-m4
@@ -45,6 +45,8 @@ set(DEVICE_SOURCES
 
 set(COMMON_SOURCES
     ${CMAKE_SOURCE_DIR}/common/src/platform.c
+    ${CMAKE_SOURCE_DIR}/common/drivers/spi.c
+    ${CMAKE_SOURCE_DIR}/common/drivers/adxl345.c
 )
 
 set(FREERTOS_SOURCES
@@ -70,6 +72,7 @@ add_executable(${PROJECT_NAME}.elf
 
 target_include_directories(${PROJECT_NAME}.elf PRIVATE
     ${CMAKE_SOURCE_DIR}/common/inc
+    ${CMAKE_SOURCE_DIR}/common/drivers
     ${CMAKE_SOURCE_DIR}/cmsis/core
     ${CMAKE_SOURCE_DIR}/cmsis/device/stm32f4xx
 )
